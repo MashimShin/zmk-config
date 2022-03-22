@@ -1,26 +1,24 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include "aliases.h"
- 
-&sk {
-  release-after-ms = <60000>;
-};
 
+#define xxx &none
+#define ___ &trans
+
+#define DEF 0
+#define NAV 1
+#define NUM 2
+
+#
 / {
   keymap {
     compatible = "zmk,keymap";
   
     default {
       bindings = <
-//╭──────────┬──────────┬──────────┬──────────┬───────────┬──────────╮                                                  ╭──────────┬──────────┬───────────┬───────────┬──────────┬──────────╮
    &kp ESC      &kp Q      &kp W      &kp F       &kp P      &kp B                                                        &kp J      &kp L      &kp U       & kp Y      &kp SEMI   &kp BSLH
-//╭──────────┼──────────┼──────────┼──────────┼───────────┼──────────╮                                                  ╭──────────┼──────────┼───────────┼───────────┼──────────┼──────────┤
    &kp TAB      &kp A      &kp R      &kp S       &kp T      &kp G                                                        &kp M      &kp N      &kp E       & kp I      &kp O      &kp SQT
-//╭──────────┼──────────┼──────────┼──────────┼───────────┼──────────╮╭───────────┬──────────╮     ╭─────────┬─────────╮╭──────────┼──────────┼───────────┼───────────┼──────────┼──────────┤
    &kp LSHFT    &kp Z      &kp X      &kp C       &kp D      &kp V      &kp A        &kp A           &kp A     &kp A      &kp K      &kp H      &kp COMMA   & kp DOT    &kp FSLH   &kp RCTRL
-//╰──────────┴──────────┴──────────┴──────────┴───────────┼──────────┼────────────┼──────────┤     ├─────────┼──────────┼──────────┼──────────┼───────────┴───────────┴──────────┴──────────╯
-                                     &kp LGUI   &kp DEL     MO(NAV)   &sk LSHIFT   &kp ESC           &kp RET   &kp SPACE  MO(NUM)    &kp BSPC   &kp RALT
-//                                 ╰──────────┴───────────┴──────────┴────────────┴──────────╯     ╰─────────┴──────────┴──────────┴──────────┴──────────╯
+                                      &kp LGUI    &kp DEL    &mo NAV    &sk LSHIFT   &kp ESC         &kp RET   &kp SPACE  &mo NUM    &kp BSPC   &kp RALT
       >;
       sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
     };
@@ -28,36 +26,22 @@
 
     navigation {
       bindings = <
-//╭─────┬─────┬─────────────┬─────────────┬─────────────┬─────╮                            ╭─────┬─────────────┬─────────────┬─────────────┬─────────────┬─────╮
-    ___   XXX   &key_repeat   SK(LCTRL)     SK(RGUI)      XXX                                XXX   &kp LS(TAB)   &kp TAB       &kp ESC       XXX           ___
-//├─────┼─────┼─────────────┼─────────────┼─────────────┼─────┤                            ├─────┼─────────────┼─────────────┼─────────────┼─────────────┼─────┤
-    ___   XXX   SK(LSHIFT)    SK(LALT)      SK(LGUI)      XXX                                XXX   &kp BSPC      &kp UP        &kp ENTER     &kp DEL       ___
-//├─────┼─────┼─────────────┼─────────────┼─────────────┼─────┼──────┬─────╮   ╭─────┬─────┼─────┼─────────────┼─────────────┼─────────────┼─────────────┼─────┤
-    ___   XXX   XXX           XXX           XXX           XXX   ___    ___       ___   ___   XXX   &kp LEFT      &kp DOWN      &kp RIGHT     XXX           ___
-//╰─────┴─────┴─────────────┴─────────────┼─────────────┼─────┴──────┴─────┤   ├─────┴─────┴─────┼─────────────┼─────────────┴─────────────┴─────────────┴─────╯
+    ___   xxx   &key_repeat   &sk LCTRL     &sk RGUI      xxx                                xxx   &kp LS(TAB)   &kp TAB       &kp ESC       xxx           ___
+    ___   xxx   &sk LSHIFT    &sk LALT      &sk LGUI      xxx                                xxx   &kp BSPC      &kp UP        &kp ENTER     &kp DEL       ___
+    ___   xxx   xxx           xxx           xxx           xxx   ___    ___       ___   ___   xxx   &kp LEFT      &kp DOWN      &kp RIGHT     xxx           ___
                               ___           ___           ___   ___    ___       ___   ___   ___   ___           ___
-//                          ╰─────────────┴─────────────┴─────┴──────┴─────╯   ╰─────┴─────┴─────┴─────────────┴─────────────╯
       >;
       sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
     };
 
     number {
       bindings = <
- // ╭─────┬────────────┬────────┬────────┬────────┬─────────────╮                            ╭─────┬─────────────┬─────────────┬───────────┬─────────────┬─────╮
-      ___   &kp GRAVE    &kp N7   &kp N8   &kp N9   &kp EQUAL                                  XXX   &key_repeat   SK(LCTRL)     SK(RGUI)    XXX           ___
- // ├─────┼────────────┼────────┼────────┼────────┼─────────────┤                            ├─────┼─────────────┼─────────────┼───────────┼─────────────┼─────┤
-      ___   &kp N0       &kp N4   &kp N5   &kp N6   &kp MINUS                                  XXX   SK(LSHIFT)    SK(LALT)      SK(LGUI)    XXX           ___
- // ├─────┼────────────┼────────┼────────┼────────┼─────────────┼──────┬─────╮   ╭─────┬─────┼─────┼─────────────┼─────────────┼───────────┼─────────────┼─────┤
-      ___   &kp BSLH     &kp N1   &kp N2   &kp N3   &kp SEMI      ___    ___       ___   ___   XXX   XXX           XXX           XXX         XXX           ___
- // ╰─────┴────────────┴────────┴────────┼────────┼─────────────┴──────┴─────┤   ├─────┴─────┴─────┼─────────────┴─────────────┼───────────┴─────────────┴─────╯
+      ___   &kp GRAVE    &kp N7   &kp N8   &kp N9   &kp EQUAL                                  xxx   &key_repeat   &sk LCTRL     &sk RGUI    xxx           ___
+      ___   &kp N0       &kp N4   &kp N5   &kp N6   &kp MINUS                                  xxx   &sk LSHIFT    &sk LALT      &sk LGUI    xxx           ___
+      ___   &kp BSLH     &kp N1   &kp N2   &kp N3   &kp SEMI      ___    ___       ___   ___   xxx   xxx           xxx           xxx         xxx           ___
                                   ___      ___      ___           ___    ___       ___   ___   ___   ___           ___
- //                             ╰────────┴────────┴─────────────┴──────┴─────╯   ╰─────┴─────┴─────┴─────────────┴─────────────╯
       >;
       sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
     };
   };
 };
-
-
-
-
