@@ -1,9 +1,7 @@
-#define XXX &none
+#define xxx &none
 #define ___ &trans
 
-#define BASE 0
+#define DEF 0
 #define NAV 1
 #define NUM 2
 
-#define SK(KEY) &nk KEY KEY
-#define MO(LAYER) &mo_tap LAYER F24
