@@ -1,7 +1,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
+#include "aliases.h"
 
 / {
   keymap {
@@ -9,32 +8,33 @@
   
     default_layer {
       bindings = <
-	&kp ESC     &kp Q       &kp W &kp E &kp R &kp T                                            &kp Y &kp U  &kp I     &kp O   &kp P         &kp BSPC
-	&lt FNC TAB &hm LSHFT A &kp S &kp D &kp F &kp G                                            &kp H &kp J  &kp K     &kp L   &hm RSHFT SQT &lt FNC RET
-	&kp LSHFT   &kp Z       &kp X &kp C &kp V &kp B &none   &kp LCTRL         &kp RCTRL &none  &kp N &kp M  &kp COMMA &kp DOT &kp FSLH      &mt RSHFT SEMI
-	              &tog ENC2 &mt LALT RET  &kp LCTRL &mx NAV OSL &kp DEL            &kp BKSP &mo NUM &kp SPC &sl OSL &kp LGUI
+   &kp ESC      &kp Q      &kp W      &kp F       &kp P      &kp B                                                        &kp J      &kp L      &kp U       & kp Y      &kp SEMI   &kp BSLH
+   &kp TAB      &kp A      &kp R      &kp S       &kp T      &kp G                                                        &kp M      &kp N      &kp E       & kp I      &kp O      &kp SQT
+   &kp LSHFT    &kp Z      &kp X      &kp C       &kp D      &kp V      &kp A        &kp A           &kp A     &kp A      &kp K      &kp H      &kp COMMA   & kp DOT    &kp FSLH   &kp RCTRL
+                                      &kp LGUI    &kp DEL    &mo NAV    &sk LSHIFT   &kp ESC         &kp RET   &kp SPACE  &mo NUM    &kp BSPC   &kp RALT
       >;
-      sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
+      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
     };
 
-    enc1_layer {
+
+    navigation_layer {
       bindings = <
-	&trans &trans &trans &trans &trans &trans                              &trans &trans &trans &trans &trans &trans
-	&trans &trans &trans &trans &trans &trans                              &trans &trans &trans &trans &trans &trans
-	&trans &trans &trans &trans &trans &trans &trans &trans  &trans &trans &trans &trans &trans &trans &trans &trans
-	                       &tog ENC3  &trans   &trans        &trans &trans  &trans &trans    &trans    &kp LALT     &tog ENC2
+    ___   xxx   &key_repeat   &sk LCTRL     &sk RGUI      xxx                                xxx   &kp LS(TAB)   &kp TAB       &kp ESC       xxx           ___
+    ___   xxx   &sk LSHIFT    &sk LALT      &sk LGUI      xxx                                xxx   &kp BSPC      &kp UP        &kp ENTER     &kp DEL       ___
+    ___   xxx   xxx           xxx           xxx           xxx   ___    ___       ___   ___   xxx   &kp LEFT      &kp DOWN      &kp RIGHT     xxx           ___
+                              ___           ___           ___   ___    ___       ___   ___   ___   ___           ___
       >;
-      sensor-bindings = <&inc_dec_kp LS(TAB) TAB>;
+      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
     };
 
-    enc2_layer {
+    number_layer {
       bindings = <
-	&trans &trans &trans &trans &trans &trans                              &trans &trans &trans &trans &trans &trans
-	&trans &trans &trans &trans &trans &trans                              &trans &trans &trans &trans &trans &trans
-	&trans &trans &trans &trans &trans &trans &trans &trans  &trans &trans &trans &trans &trans &trans &trans &trans
-	                       &kp LGUI  &trans   &trans        &trans &trans  &trans &trans    &trans    &trans     &tog ENC3
+      ___   &kp GRAVE    &kp N7   &kp N8   &kp N9   &kp EQUAL                                  xxx   &key_repeat   &sk LCTRL     &sk RGUI    xxx           ___
+      ___   &kp N0       &kp N4   &kp N5   &kp N6   &kp MINUS                                  xxx   &sk LSHIFT    &sk LALT      &sk LGUI    xxx           ___
+      ___   &kp BSLH     &kp N1   &kp N2   &kp N3   &kp SEMI      ___    ___       ___   ___   xxx   xxx           xxx           xxx         xxx           ___
+                                  ___      ___      ___           ___    ___       ___   ___   ___   ___           ___
       >;
-      sensor-bindings = <&inc_dec_kp LR_DOWN LR_UP>;
+      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
     };
   };
 };
