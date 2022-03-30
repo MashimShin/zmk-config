@@ -75,7 +75,6 @@
    &kp LSHFT    &kp Z      &kp X      &kp C       &kp D      &kp V      &kp A        &kp A           &kp A     &kp A      &kp K      &kp H      &kp COMMA   & kp DOT    &kp FSLH   &kp RCTRL
                                       &kp LGUI    &kp DEL    &mo NAV    &sk LSHIFT   &kp ESC         &kp RET   &kp SPACE  &mo NUM    &kp BSPC   &kp RALT
       >;
-      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
 		};
 
 		enc1_layer {
